@@ -13,3 +13,11 @@ after_success:
   - docker build -t ganeshmani009/multi-nginx ./nginx
   - docker build -t ganeshmani009/multi-server ./server
   - docker build -t ganeshmani009/multi-worker ./worker    
+
+  #docker login from travis
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #pushing those images to docker hub
+  - docker push ganeshmani009/multi-react
+  - docker push ganeshmani009/multi-nginx
+  - docker push ganeshmani009/multi-server
+  - docker push ganeshmani009/multi-worker
